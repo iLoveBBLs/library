@@ -1,0 +1,26 @@
+local plr = game:GetService("Players").LocalPlayer
+local tween_s = game:GetService("TweenService")
+local info1 = TweenInfo.new(10,Enum.EasingStyle.Quad);
+local info2 = TweenInfo.new(50,Enum.EasingStyle.Quad);
+
+game:GetService("Workspace").Gravity = 0.5
+function TelportCurrentPlayer1(...)
+   local tic_k = tick();
+   local params = {...};
+   local cframe = CFrame.new(params[1],params[2],params[3]);
+   local tween,err = pcall(function()
+       local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info1,{CFrame=cframe});
+       tween:Play();
+   end)
+   if not tween then return err end
+end
+function TelportCurrentPlayer2(...)
+   local tic_k = tick();
+   local params = {...};
+   local cframe = CFrame.new(params[1],params[2],params[3]);
+   local tween,err = pcall(function()
+       local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info2,{CFrame=cframe});
+       tween:Play();
+   end)
+   if not tween then return err end
+end
